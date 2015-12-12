@@ -1,12 +1,3 @@
-test:
-    resource: "@TestBundle/Resources/config/routing.yml"
-    prefix:   /
-
-dummy:
-    resource: "@DummyBundle/Controller/"
-    type:     annotation
-    prefix:   /
-
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
