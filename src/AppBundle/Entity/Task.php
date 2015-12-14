@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Task
  *
- * @ORM\Table(name="task")
+ * @ORM\Table(name="todo_task")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\TaskRepository")
  */
 class Task
@@ -156,4 +156,3 @@ class Task
         return $this->createdAt;
     }
 }
-
