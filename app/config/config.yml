@@ -9,6 +9,18 @@ imports:
 parameters:
     locale: en
 
+assetic:
+    debug:          '%kernel.debug%'
+    # tell to assetic to generate or not: true|false
+    use_controller: '%kernel.debug%' 
+    filters:
+        cssrewrite: ~
+    assets:
+        app_bundle:
+            inputs:
+                - '@AppBundle/Resources/public/js/*'
+                
+        
 framework:
     #esi:             ~
     #translator:      { fallbacks: ["%locale%"] }

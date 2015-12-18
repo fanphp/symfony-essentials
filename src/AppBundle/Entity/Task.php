@@ -38,7 +38,7 @@ class Task
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="due_date", type="date", nullable=true)
+     * @ORM\Column(name="due_date",type="date", nullable=true)
      */
     private $dueDate;
 
@@ -48,6 +48,20 @@ class Task
      * @ORM\Column(name="created_at", type="datetime")
      */
     private $createdAt;
+
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Tag")
+    */
+    private $tags;
+
+
+    /**
+     * @var
+     *
+     * @ORM\Column(type="boolean")
+     */
+    private $finished;
 
 
     /**
@@ -140,7 +154,7 @@ class Task
      * @return Task
      */
     public function setCreatedAt($createdAt)
-    {
+    {        
         $this->createdAt = $createdAt;
 
         return $this;
@@ -154,5 +168,70 @@ class Task
     public function getCreatedAt()
     {
         return $this->createdAt;
+    }
+
+    /**
+     * Set finished
+     *
+     * @param boolean $finished
+     *
+     * @return Task
+     */
+    public function setFinished($finished)
+    {
+        $this->finished = $finished;
+
+        return $this;
+    }
+
+    /**
+     * Get finished
+     *
+     * @return boolean
+     */
+    public function getFinished()
+    {
+        return $this->finished;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->tags = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add tag
+     *
+     * @param \AppBundle\Entity\Tag $tag
+     *
+     * @return Task
+     */
+    public function addTag(\AppBundle\Entity\Tag $tag)
+    {
+        $this->tags[] = $tag;
+
+        return $this;
+    }
+
+    /**
+     * Remove tag
+     *
+     * @param \AppBundle\Entity\Tag $tag
+     */
+    public function removeTag(\AppBundle\Entity\Tag $tag)
+    {
+        $this->tags->removeElement($tag);
+    }
+
+    /**
+     * Get tags
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getTags()
+    {
+        return $this->tags;
     }
 }
