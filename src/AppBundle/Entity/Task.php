@@ -198,7 +198,10 @@ class Task
      */
     public function __construct()
     {
-        $this->tags = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->tags      = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->dueDate   = new \DateTime('+1 day');
+        $this->createdAt = new \DateTime();
+        $this->finished  = false;
     }
 
     /**

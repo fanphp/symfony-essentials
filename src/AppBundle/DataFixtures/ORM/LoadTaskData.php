@@ -21,10 +21,10 @@ class LoadTaskData extends AbstractFixture implements OrderedFixtureInterface
         $obj->setName('example task')
             ->setNotes("nota di esempio")
             ->setCreatedAt(new \DateTime())
-            ->setFinished(true);
-        
-        $obj->addTag($this->getReference('tag:home'));
-        $obj->addTag($this->getReference('tag:important'));
+            ->setFinished(true)
+            ->addTag($this->getReference('tag:home'))
+            ->addTag($this->getReference('tag:company'));
+
 
         $manager->persist($obj);
         $manager->flush();
